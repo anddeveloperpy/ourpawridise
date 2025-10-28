@@ -20,7 +20,7 @@ export function ComingSoonHero() {
         </h1>
 
         <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto text-balance leading-relaxed">
-          {"A compassionate platform connecting loving homes with pets in need across Guatemala"}
+          {"Our mission is to connect loving homes with pets in need across Guatemala"}
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
