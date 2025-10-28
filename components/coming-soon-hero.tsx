@@ -26,7 +26,7 @@ export function ComingSoonHero() {
         <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
           <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-card/50 backdrop-blur-sm border border-border">
             <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <span className="text-sm font-medium">Coming Soon</span>
+            <span className="text-sm font-medium">Coming very soon</span>
           </div>
         </div>
       </div>
