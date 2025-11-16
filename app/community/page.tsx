@@ -1,15 +1,20 @@
 import { Navigation } from '@/components/navigation'
-import { HeroSection } from '@/components/hero-section'
+import { CommunitySection } from '@/components/community-section'
 import { Footer } from '@/components/footer'
 import { MobileNav } from '@/components/mobile-nav'
 import { ScrollToTop } from '@/components/scroll-to-top'
 
-export default function Home() {
+export const metadata = {
+  title: 'Comunidad - OurPawradise',
+  description: 'Únete a nuestra comunidad y comparte historias de adopción y rescate.',
+}
+
+export default function CommunityPage() {
   return (
     <>
       <main className="min-h-screen pb-20 md:pb-0">
         <Navigation />
-        <HeroSection />
+        <CommunitySection />
         <Footer />
       </main>
       <MobileNav />
