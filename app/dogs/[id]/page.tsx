@@ -53,6 +53,13 @@ const dogData: Record<string, any> = {
   },
 }
 
+export async function generateStaticParams() {
+  // Return all dog IDs that should be pre-rendered at build time
+  return Object.keys(dogData).map((id) => ({
+    id: id,
+  }))
+}
+
 export default async function DogDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
   const dog = dogData[id] || dogData['1']

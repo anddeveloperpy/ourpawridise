@@ -29,6 +29,13 @@ const shelterData: Record<string, any> = {
   },
 }
 
+export async function generateStaticParams() {
+  // Return all shelter IDs that should be pre-rendered at build time
+  return Object.keys(shelterData).map((id) => ({
+    id: id,
+  }))
+}
+
 export default async function ShelterDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
   const shelter = shelterData[id] || shelterData['1']
