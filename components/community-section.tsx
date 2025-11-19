@@ -8,9 +8,9 @@ import { communityPosts } from '@/lib/community-data'
 export function CommunitySection() {
   return (
     <section id="community" className="py-16 sm:py-24 bg-background">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-12">
+        <div className="max-w-3xl mx-auto text-center mb-12">
           <div className="inline-block mb-4">
             <span className="inline-flex items-center gap-2 px-4 py-2 bg-lavender/10 text-lavender rounded-full text-sm font-semibold">
               Comunidad OurPawradise
@@ -35,7 +35,7 @@ export function CommunitySection() {
         </div>
 
         {/* Posts Feed */}
-        <div className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {communityPosts.map((post) => (
             <PostCard key={post.id} {...post} />
           ))}
