@@ -41,7 +41,7 @@ export function DogProfileCard({
   tags,
 }: DogProfileCardProps) {
   return (
-    <Card className="group overflow-hidden hover:shadow-2xl transition-all duration-300 border-2 hover:border-primary/30">
+    <Card className="group overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border-2 border-border/50 hover:border-primary/30">
       {/* Image */}
       <div className="relative h-64 overflow-hidden">
         <Image
@@ -54,7 +54,7 @@ export function DogProfileCard({
         <button className="absolute top-4 right-4 p-2 bg-white/95 rounded-full shadow-lg hover:bg-accent hover:scale-110 transition-all">
           <Heart className="w-5 h-5 text-accent group-hover:fill-white group-hover:text-white" />
         </button>
-        
+
         {/* Health Badge */}
         <div className="absolute bottom-4 left-4">
           <Badge className="bg-primary/95 text-white border-0 shadow-md">
@@ -96,8 +96,8 @@ export function DogProfileCard({
                 tag.variant === 'accent'
                   ? 'border-accent/40 text-accent bg-accent/5'
                   : tag.variant === 'secondary'
-                  ? 'border-secondary/40 text-secondary bg-secondary/5'
-                  : 'border-primary/40 text-primary bg-primary/5'
+                    ? 'border-secondary/40 text-secondary bg-secondary/5'
+                    : 'border-primary/40 text-primary bg-primary/5'
               }
             >
               {tag.label}
@@ -108,7 +108,7 @@ export function DogProfileCard({
 
       <CardContent className="space-y-3 pt-0">
         {/* Shelter Info */}
-        <Link 
+        <Link
           href={`/shelters/${shelter.id}`}
           className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
         >

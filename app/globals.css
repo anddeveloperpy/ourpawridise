@@ -4,51 +4,51 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Updated theme with new color palette: maroon, golden yellow, oranges, reds, and white */
-  --background: #FFFFFF;
-  --foreground: #780116;
+  /* Warm & Professional Palette */
+  --background: #FFFBF7; /* Warm White */
+  --foreground: #4A3B32; /* Dark Warm Brown */
   --card: #FFFFFF;
-  --card-foreground: #780116;
+  --card-foreground: #4A3B32;
   --popover: #FFFFFF;
-  --popover-foreground: #780116;
-  --primary: #c32f27;
+  --popover-foreground: #4A3B32;
+  --primary: #D95D39; /* Rust Orange */
   --primary-foreground: #FFFFFF;
-  --secondary: #f7b538;
-  --secondary-foreground: #780116;
-  --muted: #FEF3E2;
-  --muted-foreground: #780116;
-  --accent: #d8572a;
+  --secondary: #E09F3E; /* Golden Yellow */
+  --secondary-foreground: #4A3B32;
+  --muted: #F2E8CF; /* Pale Parchment */
+  --muted-foreground: #8D7F71; /* Muted Brown */
+  --accent: #6A994E; /* Moss Green - Nature/Outdoors */
   --accent-foreground: #FFFFFF;
-  --orange: #db7c26;
-  --destructive: #c32f27;
+  --orange: #F4A261; /* Sandy Orange */
+  --destructive: #BC4749; /* Muted Red */
   --destructive-foreground: #FFFFFF;
-  --border: #F5E6D3;
-  --input: #F5E6D3;
-  --ring: #c32f27;
+  --border: #E6DCC9; /* Warm Beige Border */
+  --input: #E6DCC9;
+  --ring: #D95D39;
   --radius: 1rem;
 }
 
 .dark {
-  --background: #780116;
-  --foreground: #FFFFFF;
-  --card: #9a0520;
-  --card-foreground: #FFFFFF;
-  --popover: #9a0520;
-  --popover-foreground: #FFFFFF;
-  --primary: #c32f27;
+  --background: #2D241E; /* Dark Espresso */
+  --foreground: #F2E8CF; /* Pale Parchment */
+  --card: #382E26; /* Slightly lighter espresso */
+  --card-foreground: #F2E8CF;
+  --popover: #382E26;
+  --popover-foreground: #F2E8CF;
+  --primary: #E76F51; /* Brighter Rust for dark mode */
   --primary-foreground: #FFFFFF;
-  --secondary: #f7b538;
-  --secondary-foreground: #780116;
-  --muted: #9a0520;
-  --muted-foreground: #f7b538;
-  --accent: #d8572a;
+  --secondary: #E09F3E;
+  --secondary-foreground: #2D241E;
+  --muted: #4A3B32;
+  --muted-foreground: #A69B8F;
+  --accent: #6A994E;
   --accent-foreground: #FFFFFF;
-  --orange: #db7c26;
-  --destructive: #c32f27;
+  --orange: #F4A261;
+  --destructive: #BC4749;
   --destructive-foreground: #FFFFFF;
-  --border: #9a0520;
-  --input: #9a0520;
-  --ring: #c32f27;
+  --border: #4A3B32;
+  --input: #4A3B32;
+  --ring: #E76F51;
 }
 
 @theme inline {

@@ -185,23 +185,23 @@ export function AdoptionSection() {
         </div>
 
         {/* Filter Badges - Placeholder for future functionality */}
-        <div className="flex flex-wrap gap-2 justify-center mb-12">
-          <Badge variant="outline" className="cursor-pointer hover:bg-primary hover:text-white hover:border-primary transition-all">
+        <div className="flex flex-wrap gap-3 justify-center mb-12">
+          <Badge variant="outline" className="px-4 py-2 text-sm cursor-pointer hover:bg-primary hover:text-white hover:border-primary transition-all shadow-sm hover:shadow-md">
             Todos
           </Badge>
-          <Badge variant="outline" className="cursor-pointer hover:bg-primary hover:text-white hover:border-primary transition-all">
+          <Badge variant="outline" className="px-4 py-2 text-sm cursor-pointer hover:bg-primary hover:text-white hover:border-primary transition-all shadow-sm hover:shadow-md">
             Pequeños
           </Badge>
-          <Badge variant="outline" className="cursor-pointer hover:bg-primary hover:text-white hover:border-primary transition-all">
+          <Badge variant="outline" className="px-4 py-2 text-sm cursor-pointer hover:bg-primary hover:text-white hover:border-primary transition-all shadow-sm hover:shadow-md">
             Medianos
           </Badge>
-          <Badge variant="outline" className="cursor-pointer hover:bg-primary hover:text-white hover:border-primary transition-all">
+          <Badge variant="outline" className="px-4 py-2 text-sm cursor-pointer hover:bg-primary hover:text-white hover:border-primary transition-all shadow-sm hover:shadow-md">
             Grandes
           </Badge>
-          <Badge variant="outline" className="cursor-pointer hover:bg-primary hover:text-white hover:border-primary transition-all">
+          <Badge variant="outline" className="px-4 py-2 text-sm cursor-pointer hover:bg-primary hover:text-white hover:border-primary transition-all shadow-sm hover:shadow-md">
             Cachorros
           </Badge>
-          <Badge variant="outline" className="cursor-pointer hover:bg-primary hover:text-white hover:border-primary transition-all">
+          <Badge variant="outline" className="px-4 py-2 text-sm cursor-pointer hover:bg-primary hover:text-white hover:border-primary transition-all shadow-sm hover:shadow-md">
             Seniors
           </Badge>
         </div>

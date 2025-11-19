@@ -4,13 +4,14 @@ import Image from 'next/image'
 
 export function HeroSection() {
   return (
-    <section className="relative bg-gradient-to-br from-primary/5 via-background to-secondary/5 overflow-hidden">
+    <section className="relative bg-gradient-to-br from-primary/10 via-background to-secondary/10 overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-secondary/20 via-transparent to-transparent opacity-50 pointer-events-none" />
       {/* Decorative Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <pattern id="paw-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
-              <path d="M30,40 Q30,35 35,35 Q40,35 40,40 Q40,45 35,45 Q30,45 30,40 M25,30 Q25,27 27,27 Q29,27 29,30 Q29,33 27,33 Q25,33 25,30 M35,28 Q35,25 37,25 Q39,25 39,28 Q39,31 37,31 Q35,31 35,28 M22,40 Q22,37 24,37 Q26,37 26,40 Q26,43 24,43 Q22,43 22,40 M38,40 Q38,37 40,37 Q42,37 42,40 Q42,43 40,43 Q38,43 38,40" fill="currentColor"/>
+              <path d="M30,40 Q30,35 35,35 Q40,35 40,40 Q40,45 35,45 Q30,45 30,40 M25,30 Q25,27 27,27 Q29,27 29,30 Q29,33 27,33 Q25,33 25,30 M35,28 Q35,25 37,25 Q39,25 39,28 Q39,31 37,31 Q35,31 35,28 M22,40 Q22,37 24,37 Q26,37 26,40 Q26,43 24,43 Q22,43 22,40 M38,40 Q38,37 40,37 Q42,37 42,40 Q42,43 40,43 Q38,43 38,40" fill="currentColor" />
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#paw-pattern)" />
@@ -27,42 +28,18 @@ export function HeroSection() {
                 Adopta, No Compres
               </span>
             </div>
-            
+
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-balance">
               Ayuda a Perros Rescatados a Encontrar{' '}
               <span className="text-primary">Amor</span> y una{' '}
               <span className="text-secondary">Nueva Vida</span>
             </h1>
-            
+
             <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed text-pretty max-w-2xl">
               Conectamos personas compasivas en Guatemala con refugios de perros y mascotas rescatadas que buscan un hogar lleno de amor.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button 
-                size="lg" 
-                className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 shadow-lg hover:shadow-xl transition-all text-lg"
-              >
-                <Home className="w-5 h-5 mr-2" />
-                Ver Refugios
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-2 border-secondary text-secondary hover:bg-secondary hover:text-white rounded-full px-8 shadow-md hover:shadow-lg transition-all text-lg"
-              >
-                <Heart className="w-5 h-5 mr-2" />
-                Adoptar un Perro
-              </Button>
-              <Button 
-                size="lg" 
-                variant="ghost" 
-                className="text-foreground/70 hover:text-primary hover:bg-primary/5 rounded-full px-8"
-              >
-                <Users className="w-5 h-5 mr-2" />
-                Comunidad
-              </Button>
-            </div>
+
 
             {/* Stats */}
             <div className="grid grid-cols-3 gap-4 pt-8">
@@ -94,7 +71,7 @@ export function HeroSection() {
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>
-              
+
               {/* Small Images */}
               <div className="rounded-2xl overflow-hidden shadow-xl">
                 <Image
@@ -105,7 +82,7 @@ export function HeroSection() {
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>
-              
+
               <div className="rounded-2xl overflow-hidden shadow-xl">
                 <Image
                   src="/person-hugging-adopted-dog.jpg"

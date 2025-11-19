@@ -3,13 +3,13 @@ import { Nunito, Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const nunito = Nunito({ 
+const nunito = Nunito({
   subsets: ["latin"],
   variable: '--font-sans',
   weight: ['300', '400', '600', '700', '800']
 });
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ["latin"],
   variable: '--font-body'
 });
@@ -19,21 +19,8 @@ export const metadata: Metadata = {
   description: 'Help rescued dogs find love and a new life in Guatemala. Connect with shelters, adopt a rescued dog, and join a compassionate community.',
   generator: 'v0.app',
   icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
+    icon: '/Logos/LogoOurPawradise.png',
+    apple: '/Logos/LogoOurPawradise.png',
   },
 }
 
