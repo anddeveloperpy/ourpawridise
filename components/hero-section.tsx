@@ -30,9 +30,9 @@ export function HeroSection() {
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-balance">
-              Ayuda a Perros Rescatados a Encontrar{' '}
-              <span className="text-primary">Amor</span> y una{' '}
-              <span className="text-secondary">Nueva Vida</span>
+              Ayuda a perritos rescatados a encontrar{' '}
+              <span className="text-primary">amor</span> y una{' '}
+              <span className="text-secondary">nueva vida</span>
             </h1>
 
             <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed text-pretty max-w-2xl">
@@ -64,7 +64,7 @@ export function HeroSection() {
               {/* Large Image */}
               <div className="col-span-2 row-span-2 rounded-3xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/happy-rescued-golden-retriever-dog-smiling-outdoor.jpg"
+                  src="/Shows/Show0.jpg"
                   alt="Happy rescued dog"
                   width={800}
                   height={600}
@@ -75,7 +75,7 @@ export function HeroSection() {
               {/* Small Images */}
               <div className="rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/rescued-puppy-playing-with-toy.jpg"
+                  src="Shows/IMG_6737.jpg"
                   alt="Rescued puppy playing"
                   width={300}
                   height={300}
@@ -85,7 +85,7 @@ export function HeroSection() {
 
               <div className="rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/person-hugging-adopted-dog.jpg"
+                  src="Shows/IMG_6739.jpg"
                   alt="Person hugging dog"
                   width={300}
                   height={300}
