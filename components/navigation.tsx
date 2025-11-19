@@ -5,6 +5,11 @@ import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Heart, Menu, X } from 'lucide-react'
 import { useState } from 'react'
+import { BiHomeHeart } from "react-icons/bi";
+import { FaDog } from "react-icons/fa";
+import { FaUsers } from "react-icons/fa6";
+
+
 
 export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -30,13 +35,16 @@ export function Navigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            <Link href="/shelters" className="text-foreground/80 hover:text-primary transition-colors font-medium">
+            <Link href="/shelters" className="group flex items-center gap-2 text-foreground/80 hover:text-primary transition-colors font-medium relative">
+              <BiHomeHeart className="w-4 h-4" />
               Refugios
             </Link>
-            <Link href="/adoption" className="text-foreground/80 hover:text-primary transition-colors font-medium">
+            <Link href="/adoption" className="group flex items-center gap-2 text-foreground/80 hover:text-primary transition-colors font-medium relative">
+              <FaDog className="w-4 h-4" />
               Adopción
             </Link>
-            <Link href="/community" className="text-foreground/80 hover:text-primary transition-colors font-medium">
+            <Link href="/community" className="group flex items-center gap-2 text-foreground/80 hover:text-primary transition-colors font-medium relative">
+              <FaUsers className="w-4 h-4" />
               Comunidad
             </Link>
 
@@ -54,25 +62,30 @@ export function Navigation() {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden py-4 space-y-4 border-t border-border animate-in slide-in-from-top-2">
-            <Link
-              href="/shelters"
-              className="block py-2 text-foreground/80 hover:text-primary transition-colors font-medium"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Refugios
-            </Link>
+            <div className="flex items-center gap-4 ">
+              <Link
+                href="/shelters"
+                className="flex items-center gap-2 py-2 text-foreground/80 hover:text-primary transition-colors font-medium"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <BiHomeHeart className="w-4 h-4" />
+                Refugios
+              </Link>
+            </div>
             <Link
               href="/adoption"
-              className="block py-2 text-foreground/80 hover:text-primary transition-colors font-medium"
+              className="flex items-center gap-2 py-2 text-foreground/80 hover:text-primary transition-colors font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
+              <FaDog className="w-4 h-4" />
               Adopción
             </Link>
             <Link
               href="/community"
-              className="block py-2 text-foreground/80 hover:text-primary transition-colors font-medium"
+              className="flex items-center gap-2 py-2 text-foreground/80 hover:text-primary transition-colors font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
+              <FaUsers className="w-4 h-4" />
               Comunidad
             </Link>
 

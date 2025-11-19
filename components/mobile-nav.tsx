@@ -2,16 +2,20 @@
 
 import Link from 'next/link'
 import { Home, Building2, Heart, Users } from 'lucide-react'
+import { BiHomeHeart } from "react-icons/bi";
+import { FaDog } from "react-icons/fa";
+import { FaUsers } from "react-icons/fa6";
+import { FaPaw } from "react-icons/fa";
 import { usePathname } from 'next/navigation'
 
 export function MobileNav() {
   const pathname = usePathname()
   
   const navItems = [
-    { href: '/', icon: Home, label: 'Inicio' },
-    { href: '/shelters', icon: Building2, label: 'Refugios' },
-    { href: '/adoption', icon: Heart, label: 'Adoptar' },
-    { href: '/community', icon: Users, label: 'Comunidad' },
+    { href: '/', icon: FaPaw, label: 'Inicio' },
+    { href: '/shelters', icon: BiHomeHeart, label: 'Refugios' },
+    { href: '/adoption', icon: FaDog, label: 'Adoptar' },
+    { href: '/community', icon: FaUsers, label: 'Comunidad' },
   ]
 
   return (
