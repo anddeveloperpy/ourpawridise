@@ -20,9 +20,9 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-muted-foreground leading-relaxed text-sm">
-              Conectando personas compasivas con perros rescatados que buscan un hogar lleno de amor en Guatemala.
+              Fundado por Jose Andres Hernandez el 10 de noviembre del 2025 en Guatemala con el fin de conectar personas con perros rescatados..
             </p>
-            
+
             {/* Social Links */}
             <div className="flex items-center gap-3">
               <Button size="icon" variant="ghost" className="rounded-full hover:bg-primary/10 hover:text-primary transition-colors">
@@ -104,7 +104,7 @@ export function Footer() {
           {/* Contact & Newsletter */}
           <div className="space-y-4">
             <h3 className="font-bold text-foreground mb-4">Mantente Conectado</h3>
-            
+
             <div className="space-y-3 text-sm">
               <div className="flex items-start gap-2 text-muted-foreground">
                 <Mail className="w-4 h-4 mt-0.5 flex-shrink-0" />
