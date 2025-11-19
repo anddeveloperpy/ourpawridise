@@ -6,39 +6,29 @@ import { MapPin, Phone, Mail, Heart, ExternalLink, DogIcon, Package, Stethoscope
 import Image from 'next/image'
 import Link from 'next/link'
 import { Footer } from '@/components/footer'
-
-// Mock data - in a real app this would come from a database
-const shelterData: Record<string, any> = {
-  '1': {
-    name: 'Refugio Esperanza Canina',
-    location: 'Antigua Guatemala',
-    phone: '+502 1234-5678',
-    email: 'contacto@esperanzacanina.org',
-    description: 'Refugio Esperanza Canina nace del amor incondicional hacia los animales. Desde 2015, hemos dedicado nuestras vidas a rescatar, rehabilitar y encontrar hogares para perros abandonados y maltratados en Antigua Guatemala y sus alrededores.',
-    mission: 'Nuestra misión es crear un mundo donde cada perro tenga un hogar amoroso y una vida digna. Trabajamos para educar a la comunidad sobre tenencia responsable y promover la adopción en lugar de la compra.',
-    bannerImage: '/dog-shelter-outdoor-facility-antigua-guatemala.jpg',
-    needs: [
-      { icon: 'food', label: 'Alimento para perros', urgent: true },
-      { icon: 'medicine', label: 'Medicamentos y vacunas', urgent: true },
-      { icon: 'blankets', label: 'Cobijas y camas', urgent: false },
-      { icon: 'volunteers', label: 'Voluntarios para paseos', urgent: true },
-    ],
-    availableDogs: 12,
-    totalRescued: 230,
-    adoptionRate: 85,
-  },
-}
+import { shelters } from '@/lib/shelters-data'
+import { notFound } from 'next/navigation'
 
 export async function generateStaticParams() {
-  // Return all shelter IDs that should be pre-rendered at build time
-  return Object.keys(shelterData).map((id) => ({
-    id: id,
+  return shelters.map((shelter) => ({
+    id: shelter.id,
   }))
 }
 
+const dogImages = [
+  '/brown-chihuahua-rescue-dog-alert.jpg',
+  '/friendly-golden-labrador-rescue-dog.jpg',
+  '/gentle-golden-retriever-senior-rescue-dog.jpg',
+  '/german-shepherd-rescue-dog-loyal.jpg',
+]
+
 export default async function ShelterDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
-  const shelter = shelterData[id] || shelterData['1']
+  const shelter = shelters.find((s) => s.id === id)
+
+  if (!shelter) {
+    notFound()
+  }
 
   const needIcons: Record<string, any> = {
     food: Package,
@@ -50,15 +40,16 @@ export default async function ShelterDetailPage({ params }: { params: Promise<{ 
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+
       {/* Banner */}
       <div className="relative h-64 sm:h-80 lg:h-96 overflow-hidden">
         <Image
-          src={shelter.bannerImage || "/placeholder.svg"}
+          src={shelter.bannerImage || shelter.image}
           alt={shelter.name}
           width={1200}
           height={400}
           className="w-full h-full object-cover"
+          priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
       </div>
@@ -77,39 +68,47 @@ export default async function ShelterDetailPage({ params }: { params: Promise<{ 
                     <MapPin className="w-4 h-4" />
                     <span>{shelter.location}</span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Phone className="w-4 h-4" />
-                    <span>{shelter.phone}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Mail className="w-4 h-4" />
-                    <span>{shelter.email}</span>
-                  </div>
+                  {shelter.phone && (
+                    <div className="flex items-center gap-2">
+                      <Phone className="w-4 h-4" />
+                      <span>{shelter.phone}</span>
+                    </div>
+                  )}
+                  {shelter.email && (
+                    <div className="flex items-center gap-2">
+                      <Mail className="w-4 h-4" />
+                      <span>{shelter.email}</span>
+                    </div>
+                  )}
                 </div>
-                
+
                 {/* Stats */}
                 <div className="flex flex-wrap gap-6 mt-6">
+                  {shelter.totalRescued && (
+                    <div>
+                      <div className="text-2xl font-bold text-primary">{shelter.totalRescued}+</div>
+                      <div className="text-sm text-muted-foreground">Rescatados</div>
+                    </div>
+                  )}
+                  {shelter.adoptionRate && (
+                    <div>
+                      <div className="text-2xl font-bold text-secondary">{shelter.adoptionRate}%</div>
+                      <div className="text-sm text-muted-foreground">Tasa de Adopción</div>
+                    </div>
+                  )}
                   <div>
-                    <div className="text-2xl font-bold text-primary">{shelter.totalRescued}+</div>
-                    <div className="text-sm text-muted-foreground">Rescatados</div>
-                  </div>
-                  <div>
-                    <div className="text-2xl font-bold text-secondary">{shelter.adoptionRate}%</div>
-                    <div className="text-sm text-muted-foreground">Tasa de Adopción</div>
-                  </div>
-                  <div>
-                    <div className="text-2xl font-bold text-accent">{shelter.availableDogs}</div>
+                    <div className="text-2xl font-bold text-accent">{shelter.availableDogs || shelter.dogsCount}</div>
                     <div className="text-sm text-muted-foreground">Disponibles</div>
                   </div>
                 </div>
               </div>
-              
-              <div className="flex flex-col gap-3">
-                <Button className="bg-accent hover:bg-accent/90 text-white rounded-full px-6 shadow-lg">
+
+              <div className="flex flex-col gap-3 w-full md:w-auto">
+                <Button className="bg-accent hover:bg-accent/90 text-white rounded-full px-6 shadow-lg w-full md:w-auto">
                   <Heart className="w-4 h-4 mr-2 fill-white" />
                   Donar Ahora
                 </Button>
-                <Button variant="outline" className="border-2 border-primary text-primary hover:bg-primary hover:text-white rounded-full px-6">
+                <Button variant="outline" className="border-2 border-primary text-primary hover:bg-primary hover:text-white rounded-full px-6 w-full md:w-auto">
                   Contactar Refugio
                 </Button>
               </div>
@@ -129,9 +128,11 @@ export default async function ShelterDetailPage({ params }: { params: Promise<{ 
                 <p className="text-muted-foreground leading-relaxed">
                   {shelter.description}
                 </p>
-                <p className="text-muted-foreground leading-relaxed">
-                  {shelter.mission}
-                </p>
+                {shelter.mission && (
+                  <p className="text-muted-foreground leading-relaxed">
+                    {shelter.mission}
+                  </p>
+                )}
               </CardContent>
             </Card>
 
@@ -142,18 +143,18 @@ export default async function ShelterDetailPage({ params }: { params: Promise<{ 
                   <CardTitle className="text-2xl">Perros en Adopción</CardTitle>
                   <Badge className="bg-primary text-white">
                     <DogIcon className="w-3 h-3 mr-1" />
-                    {shelter.availableDogs} disponibles
+                    {shelter.availableDogs || shelter.dogsCount} disponibles
                   </Badge>
                 </div>
               </CardHeader>
               <CardContent>
                 <div className="grid sm:grid-cols-2 gap-4">
-                  {[1, 2, 3, 4].map((i) => (
-                    <Link key={i} href={`/dogs/${i}`}>
+                  {[0, 1, 2, 3].map((i) => (
+                    <Link key={i} href={`/dogs/${i + 1}`}>
                       <div className="group relative rounded-2xl overflow-hidden aspect-square hover:shadow-xl transition-all">
                         <Image
-                          src={`/adoptable-rescued-dog-.jpg?height=300&width=300&query=adoptable rescued dog ${i}`}
-                          alt={`Dog ${i}`}
+                          src={dogImages[i % dogImages.length]}
+                          alt={`Dog ${i + 1}`}
                           width={300}
                           height={300}
                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
@@ -187,14 +188,13 @@ export default async function ShelterDetailPage({ params }: { params: Promise<{ 
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
-                {shelter.needs.map((need: any, idx: number) => {
+                {shelter.needs.map((need, idx) => {
                   const Icon = needIcons[need.icon]
                   return (
                     <div
                       key={idx}
-                      className={`flex items-center gap-3 p-3 rounded-lg ${
-                        need.urgent ? 'bg-accent/5 border border-accent/20' : 'bg-muted/50'
-                      }`}
+                      className={`flex items-center gap-3 p-3 rounded-lg ${need.urgent ? 'bg-accent/5 border border-accent/20' : 'bg-muted/50'
+                        }`}
                     >
                       <Icon className={`w-5 h-5 ${need.urgent ? 'text-accent' : 'text-muted-foreground'}`} />
                       <div className="flex-1">
