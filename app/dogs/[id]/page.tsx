@@ -6,63 +6,18 @@ import { Heart, Share2, MapPin, Calendar, Ruler, Palette, Thermometer, CheckCirc
 import Image from 'next/image'
 import Link from 'next/link'
 import { Footer } from '@/components/footer'
-
-// Mock data - in a real app this would come from a database
-const dogData: Record<string, any> = {
-  '1': {
-    name: 'Luna',
-    breed: 'Labrador Mix',
-    age: '2 años',
-    size: 'Mediano (22kg)',
-    temperament: 'Amigable y sociable',
-    color: 'Dorado',
-    healthStatus: 'Excelente',
-    gender: 'Hembra',
-    images: [
-      '/friendly-golden-labrador-rescue-dog-portrait.jpg',
-      '/labrador-playing-with-ball.jpg',
-      '/labrador-resting-outdoor.jpg',
-    ],
-    story: 'Luna fue rescatada de la calle cuando apenas era una cachorra. A pesar de su difícil comienzo, ha demostrado ser una perrita increíblemente amorosa y resiliente. Le encanta jugar con otros perros y es extremadamente cariñosa con las personas. Luna busca una familia activa que le brinde el amor y ejercicio que necesita para ser feliz.',
-    personality: [
-      'Extremadamente amigable con personas y otros perros',
-      'Le encanta jugar y hacer ejercicio',
-      'Obediente y fácil de entrenar',
-      'Perfecta para familias con niños',
-      'Necesita caminatas diarias y espacio para jugar',
-    ],
-    healthInfo: [
-      { icon: CheckCircle2, label: 'Vacunada', status: 'Completo' },
-      { icon: CheckCircle2, label: 'Esterilizada', status: 'Sí' },
-      { icon: CheckCircle2, label: 'Desparasitada', status: 'Sí' },
-      { icon: CheckCircle2, label: 'Microchip', status: 'Sí' },
-    ],
-    tags: [
-      { label: 'Amigable con niños', variant: 'default' },
-      { label: 'Amigable con perros', variant: 'default' },
-      { label: 'Activa', variant: 'secondary' },
-      { label: 'Entrenada', variant: 'accent' },
-    ],
-    shelter: {
-      id: '1',
-      name: 'Refugio Esperanza Canina',
-      location: 'Antigua Guatemala',
-      phone: '+502 1234-5678',
-    },
-    adoptionFee: 'Q500 (incluye vacunas y esterilización)',
-  },
-}
+import { dogs } from '@/lib/dogs-data'
 
 export async function generateStaticParams() {
   // Return all dog IDs that should be pre-rendered at build time
-  return Object.keys(dogData).map((id) => ({
-    id: id,
+  return dogs.map((dog) => ({
+    id: dog.id,
   }))
 }
 
 export default async function DogDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
-  const dog = dogData[id] || dogData['1']
+  const dog = dogs.find((d) => d.id === id) || dogs[0]
 
   return (
     <div className="min-h-screen bg-background">
@@ -144,7 +99,7 @@ export default async function DogDetailPage({ params }: { params: Promise<{ id: 
                 <div className="grid sm:grid-cols-2 gap-4">
                   {dog.healthInfo.map((info: any, idx: number) => (
                     <div key={idx} className="flex items-center gap-3 p-4 bg-primary/5 rounded-lg border border-primary/20">
-                      <info.icon className="w-6 h-6 text-primary" />
+                      <CheckCircle2 className="w-6 h-6 text-primary" />
                       <div>
                         <div className="font-medium text-foreground">{info.label}</div>
                         <div className="text-sm text-muted-foreground">{info.status}</div>

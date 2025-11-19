@@ -4,162 +4,7 @@ import { DogProfileCard } from './dog-profile-card'
 import { Button } from '@/components/ui/button'
 import { useState } from 'react'
 import { Badge } from '@/components/ui/badge'
-
-const dogs = [
-  {
-    id: '1',
-    name: 'Luna',
-    breed: 'Labrador Mix',
-    age: '2 años',
-    size: 'Mediano',
-    temperament: 'Amigable',
-    color: 'Dorado',
-    healthStatus: 'Vacunada',
-    image: '/friendly-golden-labrador-rescue-dog.jpg',
-    shelter: { name: 'Refugio Esperanza Canina', id: '1' },
-    tags: [
-      { label: 'Amigable con niños', variant: 'default' as const },
-      { label: 'Activa', variant: 'secondary' as const },
-      { label: 'Esterilizada', variant: 'accent' as const },
-    ],
-  },
-  {
-    id: '2',
-    name: 'Max',
-    breed: 'Pastor Alemán',
-    age: '3 años',
-    size: 'Grande',
-    temperament: 'Leal',
-    color: 'Negro y café',
-    healthStatus: 'Vacunado',
-    image: '/german-shepherd-rescue-dog-loyal.jpg',
-    shelter: { name: 'Patitas Felices GT', id: '2' },
-    tags: [
-      { label: 'Entrenado', variant: 'default' as const },
-      { label: 'Guardián', variant: 'secondary' as const },
-      { label: 'Desparasitado', variant: 'accent' as const },
-    ],
-  },
-  {
-    id: '3',
-    name: 'Bella',
-    breed: 'Beagle Mix',
-    age: '1 año',
-    size: 'Pequeño',
-    temperament: 'Juguetona',
-    color: 'Tricolor',
-    healthStatus: 'Vacunada',
-    image: '/playful-beagle-puppy-rescue-dog.jpg',
-    shelter: { name: 'Amor Sin Fronteras', id: '3' },
-    tags: [
-      { label: 'Amigable con gatos', variant: 'default' as const },
-      { label: 'Energética', variant: 'secondary' as const },
-      { label: 'Microchip', variant: 'accent' as const },
-    ],
-  },
-  {
-    id: '4',
-    name: 'Rocky',
-    breed: 'Pitbull Mix',
-    age: '4 años',
-    size: 'Grande',
-    temperament: 'Cariñoso',
-    color: 'Gris',
-    healthStatus: 'Vacunado',
-    image: '/loving-gray-pitbull-rescue-dog.jpg',
-    shelter: { name: 'Rescate y Amor', id: '4' },
-    tags: [
-      { label: 'Tranquilo', variant: 'default' as const },
-      { label: 'Obediente', variant: 'secondary' as const },
-      { label: 'Esterilizado', variant: 'accent' as const },
-    ],
-  },
-  {
-    id: '5',
-    name: 'Coco',
-    breed: 'Chihuahua',
-    age: '5 años',
-    size: 'Pequeño',
-    temperament: 'Alerta',
-    color: 'Café',
-    healthStatus: 'Vacunado',
-    image: '/brown-chihuahua-rescue-dog-alert.jpg',
-    shelter: { name: 'Hogar Temporal GT', id: '5' },
-    tags: [
-      { label: 'Apto para apartamento', variant: 'default' as const },
-      { label: 'Leal', variant: 'secondary' as const },
-      { label: 'Vacunado', variant: 'accent' as const },
-    ],
-  },
-  {
-    id: '6',
-    name: 'Toby',
-    breed: 'Golden Retriever',
-    age: '6 años',
-    size: 'Grande',
-    temperament: 'Gentil',
-    color: 'Dorado',
-    healthStatus: 'Vacunado',
-    image: '/gentle-golden-retriever-senior-rescue-dog.jpg',
-    shelter: { name: 'Segunda Oportunidad', id: '6' },
-    tags: [
-      { label: 'Amigable con todos', variant: 'default' as const },
-      { label: 'Tranquilo', variant: 'secondary' as const },
-      { label: 'Senior', variant: 'accent' as const },
-    ],
-  },
-  {
-    id: '7',
-    name: 'Lola',
-    breed: 'Husky Siberiano',
-    age: '2 años',
-    size: 'Mediano',
-    temperament: 'Aventurera',
-    color: 'Blanco y gris',
-    healthStatus: 'Vacunada',
-    image: '/siberian-husky-rescue-dog-adventurous.jpg',
-    shelter: { name: 'Refugio Esperanza Canina', id: '1' },
-    tags: [
-      { label: 'Activa', variant: 'default' as const },
-      { label: 'Necesita ejercicio', variant: 'secondary' as const },
-      { label: 'Esterilizada', variant: 'accent' as const },
-    ],
-  },
-  {
-    id: '8',
-    name: 'Bruno',
-    breed: 'Rottweiler Mix',
-    age: '3 años',
-    size: 'Grande',
-    temperament: 'Protector',
-    color: 'Negro',
-    healthStatus: 'Vacunado',
-    image: '/protective-black-rottweiler-rescue-dog.jpg',
-    shelter: { name: 'Patitas Felices GT', id: '2' },
-    tags: [
-      { label: 'Guardián', variant: 'default' as const },
-      { label: 'Leal', variant: 'secondary' as const },
-      { label: 'Entrenado', variant: 'accent' as const },
-    ],
-  },
-  {
-    id: '9',
-    name: 'Mía',
-    breed: 'Poodle Mix',
-    age: '1 año',
-    size: 'Pequeño',
-    temperament: 'Dulce',
-    color: 'Blanco',
-    healthStatus: 'Vacunada',
-    image: '/sweet-white-poodle-mix-rescue-dog.jpg',
-    shelter: { name: 'Amor Sin Fronteras', id: '3' },
-    tags: [
-      { label: 'Hipoalergénica', variant: 'default' as const },
-      { label: 'Cariñosa', variant: 'secondary' as const },
-      { label: 'Microchip', variant: 'accent' as const },
-    ],
-  },
-]
+import { dogs } from '@/lib/dogs-data'
 
 export function AdoptionSection() {
   const [showAll, setShowAll] = useState(false)
@@ -209,7 +54,11 @@ export function AdoptionSection() {
         {/* Dogs Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-12">
           {displayedDogs.map((dog) => (
-            <DogProfileCard key={dog.id} {...dog} />
+            <DogProfileCard
+              key={dog.id}
+              {...dog}
+              image={dog.images[0]} // Map first image to 'image' prop
+            />
           ))}
         </div>
 

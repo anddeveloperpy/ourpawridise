@@ -7,6 +7,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Footer } from '@/components/footer'
 import { shelters } from '@/lib/shelters-data'
+import { dogs } from '@/lib/dogs-data'
 import { notFound } from 'next/navigation'
 
 export async function generateStaticParams() {
@@ -15,13 +16,6 @@ export async function generateStaticParams() {
   }))
 }
 
-const dogImages = [
-  '/brown-chihuahua-rescue-dog-alert.jpg',
-  '/friendly-golden-labrador-rescue-dog.jpg',
-  '/gentle-golden-retriever-senior-rescue-dog.jpg',
-  '/german-shepherd-rescue-dog-loyal.jpg',
-]
-
 export default async function ShelterDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
   const shelter = shelters.find((s) => s.id === id)
@@ -29,6 +23,8 @@ export default async function ShelterDetailPage({ params }: { params: Promise<{ 
   if (!shelter) {
     notFound()
   }
+
+  const shelterDogs = dogs.filter((dog) => dog.shelter.id === id)
 
   const needIcons: Record<string, any> = {
     food: Package,
@@ -143,30 +139,38 @@ export default async function ShelterDetailPage({ params }: { params: Promise<{ 
                   <CardTitle className="text-2xl">Perros en Adopción</CardTitle>
                   <Badge className="bg-primary text-white">
                     <DogIcon className="w-3 h-3 mr-1" />
-                    {shelter.availableDogs || shelter.dogsCount} disponibles
+                    {shelterDogs.length} disponibles
                   </Badge>
                 </div>
               </CardHeader>
               <CardContent>
-                <div className="grid sm:grid-cols-2 gap-4">
-                  {[0, 1, 2, 3].map((i) => (
-                    <Link key={i} href={`/dogs/${i + 1}`}>
-                      <div className="group relative rounded-2xl overflow-hidden aspect-square hover:shadow-xl transition-all">
-                        <Image
-                          src={dogImages[i % dogImages.length]}
-                          alt={`Dog ${i + 1}`}
-                          width={300}
-                          height={300}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                        <div className="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-full group-hover:translate-y-0 transition-transform">
-                          <div className="font-semibold">Ver Perfil</div>
+                {shelterDogs.length > 0 ? (
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    {shelterDogs.map((dog) => (
+                      <Link key={dog.id} href={`/dogs/${dog.id}`}>
+                        <div className="group relative rounded-2xl overflow-hidden aspect-square hover:shadow-xl transition-all">
+                          <Image
+                            src={dog.images[0] || "/placeholder.svg"}
+                            alt={dog.name}
+                            width={300}
+                            height={300}
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                          <div className="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-full group-hover:translate-y-0 transition-transform">
+                            <div className="font-bold text-lg">{dog.name}</div>
+                            <div className="text-sm opacity-90">{dog.breed}</div>
+                            <div className="font-semibold mt-1">Ver Perfil</div>
+                          </div>
                         </div>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
+                      </Link>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="text-center py-8 text-muted-foreground">
+                    <p>No hay perros disponibles para adopción en este momento.</p>
+                  </div>
+                )}
                 <Link href="/#adopt">
                   <Button variant="outline" className="w-full mt-6 rounded-full">
                     Ver Todos los Perros
