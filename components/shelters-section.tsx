@@ -3,10 +3,10 @@ import { ShelterCard } from './shelter-card'
 const shelters = [
   {
     id: '1',
-    name: 'Refugio Esperanza Canina',
-    location: 'Antigua Guatemala',
-    description: 'Refugio dedicado al rescate y rehabilitación de perros en situación de calle. Operamos desde 2015 con amor y dedicación.',
-    image: '/dog-shelter-building-guatemala-antigua.jpg',
+    name: 'Asociación Amigos de los Animales (AMA)',
+    location: 'Ciudad de Guatemala',
+    description: 'La organización se dedica a ayudar a mejorar la calidad de vida de los animales en Guatemala sin importar su estado, procedencia o apariencia.',
+    image: '/Refugios/AMA.png',
     needs: [
       { icon: 'food' as const, label: 'Alimento' },
       { icon: 'medicine' as const, label: 'Medicina' },
@@ -16,10 +16,10 @@ const shelters = [
   },
   {
     id: '2',
-    name: 'Patitas Felices GT',
+    name: 'Asociación Guatemalteca Mano Amiga ',
     location: 'Ciudad de Guatemala',
-    description: 'ONG enfocada en rescate urbano y adopción responsable. Trabajamos con comunidades para educar sobre tenencia responsable.',
-    image: '/happy-dogs-in-shelter-yard-playing.jpg',
+    description: 'Esta asociación busca darle un hogar a los animales que están en calidad de abandono, ofreciéndoles cuidados veterinarios y afectividad, para luego darlos en adopción a familias.',
+    image: '/Refugios/ManoAmiga.png',
     needs: [
       { icon: 'food' as const, label: 'Alimento' },
       { icon: 'blankets' as const, label: 'Cobijas' },
@@ -28,10 +28,10 @@ const shelters = [
   },
   {
     id: '3',
-    name: 'Amor Sin Fronteras',
-    location: 'Quetzaltenango',
-    description: 'Refugio rural que rescata perros abandonados en las montañas. Proveemos cuidado médico y búsqueda de hogares permanentes.',
-    image: '/rural-dog-shelter-in-mountains-guatemala.jpg',
+    name: 'Albergue Municipal de Mixco',
+    location: 'Ciudad de Guatemala',
+    description: 'Este refugio para perros es parte de los proyectos comunitarios de la municipalidad de Mixco. El albergue rescata perritos de la calle y les brinda la atención veterinaria que necesiten. ',
+    image: '/Refugios/AlbergueMunicipal.png',
     needs: [
       { icon: 'medicine' as const, label: 'Medicina' },
       { icon: 'blankets' as const, label: 'Cobijas' },
@@ -41,10 +41,10 @@ const shelters = [
   },
   {
     id: '4',
-    name: 'Rescate y Amor',
-    location: 'Escuintla',
-    description: 'Pequeño refugio familiar que opera con el corazón. Cada perro recibe atención personalizada y mucho cariño.',
-    image: '/small-family-dog-shelter-caring-volunteers.jpg',
+    name: 'Animal Aware Guatemala',
+    location: 'Sacatepequez',
+    description: 'Esta organización sin fines de lucro opera en el sector de Sumpango, Sacatepéquez. Desde 1998 se dedican al rescate de animales maltratados y agredidos. ',
+    image: '/Refugios/AnimalAware.png',
     needs: [
       { icon: 'food' as const, label: 'Alimento' },
       { icon: 'medicine' as const, label: 'Medicina' },
@@ -53,29 +53,16 @@ const shelters = [
   },
   {
     id: '5',
-    name: 'Hogar Temporal GT',
-    location: 'Sololá',
-    description: 'Red de hogares temporales que cuidan perros rescatados mientras encuentran su familia definitiva.',
-    image: '/foster-home-with-rescued-dogs.jpg',
+    name: 'Ayudando Huellitas',
+    location: 'Ciudad de Guatemala',
+    description: 'Son un grupo benéfico enfocado en el rescate de peludos maltratados en la calle. Están ubicados sobre la calzada Roosevelt a la altura del Centro Comercial Eskala. ',
+    image: '/Refugios/AyudandoHuellitas.png',
     needs: [
       { icon: 'volunteers' as const, label: 'Voluntarios' },
       { icon: 'blankets' as const, label: 'Cobijas' },
     ],
     dogsCount: 15,
-  },
-  {
-    id: '6',
-    name: 'Segunda Oportunidad',
-    location: 'Cobán',
-    description: 'Rescatamos perros de la calle y les damos una segunda oportunidad de vida. Cada rescate es una historia de esperanza.',
-    image: '/rescued-street-dogs-getting-care.jpg',
-    needs: [
-      { icon: 'food' as const, label: 'Alimento' },
-      { icon: 'medicine' as const, label: 'Medicina' },
-      { icon: 'volunteers' as const, label: 'Voluntarios' },
-    ],
-    dogsCount: 38,
-  },
+  }
 ]
 
 export function SheltersSection() {
@@ -90,8 +77,8 @@ export function SheltersSection() {
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 text-balance">
-            Apoya a Refugios que{' '}
-            <span className="text-primary">Transforman Vidas</span>
+            Apoya a refugios que{' '}
+            <span className="text-primary">transforman vidas</span>
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed text-pretty">
             Cada refugio trabaja incansablemente para rescatar, rehabilitar y encontrar hogares amorosos para perros en necesidad.

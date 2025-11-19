@@ -64,7 +64,7 @@ export function HeroSection() {
               {/* Large Image */}
               <div className="col-span-2 row-span-2 rounded-3xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/Shows/Show0.jpg"
+                  src="Shows/Show0.jpg"
                   alt="Happy rescued dog"
                   width={800}
                   height={600}
