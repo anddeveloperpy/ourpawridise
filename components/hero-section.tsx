@@ -64,7 +64,7 @@ export function HeroSection() {
               {/* Large Image */}
               <div className="col-span-2 row-span-2 rounded-3xl overflow-hidden shadow-2xl">
                 <Image
-                  src="Shows/Show0.jpg"
+                  src="/Shows/Show0.jpg"
                   alt="Happy rescued dog"
                   width={800}
                   height={600}
@@ -75,7 +75,7 @@ export function HeroSection() {
               {/* Small Images */}
               <div className="rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="Shows/IMG_6737.jpg"
+                  src="/Shows/IMG_6737.jpg"
                   alt="Rescued puppy playing"
                   width={300}
                   height={300}
@@ -85,7 +85,7 @@ export function HeroSection() {
 
               <div className="rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="Shows/IMG_6739.jpg"
+                  src="/Shows/IMG_6739.jpg"
                   alt="Person hugging dog"
                   width={300}
                   height={300}
