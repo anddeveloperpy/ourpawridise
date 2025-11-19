@@ -6,6 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Heart, MessageCircle, Share2 } from 'lucide-react'
 import Image from 'next/image'
 import { useState } from 'react'
+import { AiFillCheckCircle } from "react-icons/ai";
 
 interface PostCardProps {
   id: string
@@ -20,6 +21,7 @@ interface PostCardProps {
   comments: number
   timeAgo: string
   isLiked?: boolean
+  verfied_post?: boolean
 }
 
 export function PostCard({
@@ -31,6 +33,7 @@ export function PostCard({
   comments,
   timeAgo,
   isLiked: initialIsLiked = false,
+  verfied_post = false,
 }: PostCardProps) {
   const [isLiked, setIsLiked] = useState(initialIsLiked)
   const [likes, setLikes] = useState(initialLikes)
@@ -58,6 +61,11 @@ export function PostCard({
                   Refugio
                 </span>
               )}
+              {verfied_post && (
+                <span className="flex items-center gap-2">
+                <AiFillCheckCircle className="w-5 h-5 text-primary" />
+              </span>
+            )}
             </div>
             <p className="text-sm text-muted-foreground">{timeAgo}</p>
           </div>

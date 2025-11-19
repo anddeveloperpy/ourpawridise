@@ -14,6 +14,7 @@ export interface Post {
   comments: number;
   timeAgo: string;
   isLiked?: boolean;
+  verfied_post?: boolean;
 }
 
 export const communityPosts: Post[] = [
@@ -30,6 +31,7 @@ export const communityPosts: Post[] = [
     comments: 42,
     timeAgo: 'Hace 2 horas',
     isLiked: false,
+    verfied_post: true,
   },
   {
     id: '2',
@@ -44,6 +46,7 @@ export const communityPosts: Post[] = [
     comments: 56,
     timeAgo: 'Hace 5 horas',
     isLiked: true,
+    verfied_post: true,
   },
   {
     id: '3',
@@ -58,6 +61,7 @@ export const communityPosts: Post[] = [
     comments: 78,
     timeAgo: 'Hace 1 día',
     isLiked: false,
+    verfied_post: false,
   },
   {
     id: '4',
@@ -72,6 +76,7 @@ export const communityPosts: Post[] = [
     comments: 93,
     timeAgo: 'Hace 1 día',
     isLiked: true,
+    verfied_post: true,
   },
   {
     id: '5',
@@ -86,6 +91,7 @@ export const communityPosts: Post[] = [
     comments: 34,
     timeAgo: 'Hace 2 días',
     isLiked: false,
+    verfied_post: false,
   },
   {
     id: '6',
@@ -100,6 +106,7 @@ export const communityPosts: Post[] = [
     comments: 127,
     timeAgo: 'Hace 3 días',
     isLiked: true,
+    verfied_post: true,
   },
   {
     id: '7',
@@ -114,6 +121,7 @@ export const communityPosts: Post[] = [
     comments: 23,
     timeAgo: 'Hace 4 días',
     isLiked: false,
+    verfied_post: false,
   }
 ];
 
