@@ -20,7 +20,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-muted-foreground leading-relaxed text-sm">
-              Fundado por Jose Andres Hernandez el 10 de noviembre del 2025 en Guatemala con el fin de conectar personas con perros rescatados..
+              Fundado por Jose Andres Hernandez el 10 de noviembre del 2025 en Guatemala con el fin de conectar personas con perros rescatados.
             </p>
 
             {/* Social Links */}
