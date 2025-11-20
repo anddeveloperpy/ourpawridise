@@ -424,5 +424,43 @@ export const dogs: Dog[] = [
     },
     adoptionFee: 'Q250',
   },
+  {
+    id: '11',
+    name: 'Nala',
+    breed: 'Mestiza',
+    age: '4 meses',
+    size: 'Pequeño (Cachorro)',
+    temperament: 'Juguetona',
+    color: 'Marrón y Blanco',
+    healthStatus: 'Excelente',
+    gender: 'Hembra',
+    images: [
+      '/Dogs/navideno.jpg',
+      '/Dogs/navideno.jpg',
+    ],
+    story: 'Nala fue encontrada solita en una caja. Ahora está segura y buscando un hogar para siempre. Es una cachorrita muy dulce y juguetona.',
+    personality: [
+      'Muy curioso y olfateador',
+      'Juguetón incansable',
+      'Sociable con todos',
+      'Necesita entrenamiento básico',
+    ],
+    healthInfo: [
+      { label: 'Vacunas', status: 'Al día (cachorro)' },
+      { label: 'Desparasitado', status: 'Sí' },
+    ],
+    tags: [
+      { label: 'Cachorro', variant: 'accent' },
+      { label: 'Juguetón', variant: 'default' },
+      { label: 'Curioso', variant: 'secondary' }
+    ],
+    shelter: {
+      id: '3',
+      name: 'Albergue Municipal de Mixco',
+      location: 'Mixco, Guatemala',
+      phone: '+502 6666-7777',
+    },
+    adoptionFee: 'Q300',
+  }
 ];
 
