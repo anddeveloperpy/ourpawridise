@@ -6,18 +6,23 @@ import { Heart, Share2, MapPin, Calendar, Ruler, Palette, Thermometer, CheckCirc
 import Image from 'next/image'
 import Link from 'next/link'
 import { Footer } from '@/components/footer'
-import { dogs } from '@/lib/dogs-data'
+import { getDogById, getAllDogIds } from '@/lib/api/dogs'
+import { notFound } from 'next/navigation'
 
 export async function generateStaticParams() {
-  // Return all dog IDs that should be pre-rendered at build time
-  return dogs.map((dog) => ({
-    id: dog.id,
+  const ids = await getAllDogIds()
+  return ids.map((id) => ({
+    id: id,
   }))
 }
 
 export default async function DogDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
-  const dog = dogs.find((d) => d.id === id) || dogs[0]
+  const dog = await getDogById(id)
+
+  if (!dog) {
+    notFound()
+  }
 
   return (
     <div className="min-h-screen bg-background">

@@ -6,9 +6,9 @@ import { MapPin, Phone, Mail, Heart, ExternalLink, DogIcon, Package, Stethoscope
 import Image from 'next/image'
 import Link from 'next/link'
 import { Footer } from '@/components/footer'
-import { dogs } from '@/lib/dogs-data'
 import { notFound } from 'next/navigation'
-import { getShelters } from '@/lib/api/shelters'
+import { getShelters, getShelterById } from '@/lib/api/shelters'
+import { getDogsByShelterId } from '@/lib/api/dogs'
 
 export async function generateStaticParams() {
   const shelters = await getShelters()
@@ -19,8 +19,7 @@ export async function generateStaticParams() {
 
 export default async function ShelterDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
-  const shelters = await getShelters()
-  const shelter = shelters.find((s) => s.id === id)
+  const shelter = await getShelterById(id)
 
   if (!shelter) {
     notFound()
@@ -29,7 +28,7 @@ export default async function ShelterDetailPage({ params }: { params: Promise<{ 
     console.log(shelter.shelter_external_links)
   }
 
-  const shelterDogs = dogs.filter((dog) => dog.shelter.id === id)
+  const shelterDogs = await getDogsByShelterId(id)
 
   const needIcons: Record<string, any> = {
     food: Package,
