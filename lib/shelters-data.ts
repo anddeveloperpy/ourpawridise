@@ -19,6 +19,7 @@ export interface Shelter {
     totalRescued?: number;
     adoptionRate?: number;
     availableDogs?: number;
+    shelter_external_links?: { name: string; url: string }[];
 }
 
 export const shelters: Shelter[] = [

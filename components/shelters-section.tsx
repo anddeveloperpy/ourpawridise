@@ -1,8 +1,11 @@
 import { ShelterCard } from './shelter-card'
+import { Shelter } from '@/lib/shelters-data'
 
-import { shelters } from '@/lib/shelters-data'
+interface SheltersSectionProps {
+  shelters: Shelter[]
+}
 
-export function SheltersSection() {
+export function SheltersSection({ shelters }: SheltersSectionProps) {
   return (
     <section id="shelters" className="py-16 sm:py-24 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

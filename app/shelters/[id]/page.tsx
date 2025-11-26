@@ -6,11 +6,12 @@ import { MapPin, Phone, Mail, Heart, ExternalLink, DogIcon, Package, Stethoscope
 import Image from 'next/image'
 import Link from 'next/link'
 import { Footer } from '@/components/footer'
-import { shelters } from '@/lib/shelters-data'
 import { dogs } from '@/lib/dogs-data'
 import { notFound } from 'next/navigation'
+import { getShelters } from '@/lib/api/shelters'
 
 export async function generateStaticParams() {
+  const shelters = await getShelters()
   return shelters.map((shelter) => ({
     id: shelter.id,
   }))
@@ -18,10 +19,14 @@ export async function generateStaticParams() {
 
 export default async function ShelterDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
+  const shelters = await getShelters()
   const shelter = shelters.find((s) => s.id === id)
 
   if (!shelter) {
     notFound()
+  }
+  else{
+    console.log(shelter.shelter_external_links)
   }
 
   const shelterDogs = dogs.filter((dog) => dog.shelter.id === id)
@@ -226,7 +231,21 @@ export default async function ShelterDetailPage({ params }: { params: Promise<{ 
                 <CardTitle className="text-xl">Enlaces Rápidos</CardTitle>
               </CardHeader>
               <CardContent className="space-y-2">
-                <Button variant="ghost" className="w-full justify-start">
+                 {shelter.shelter_external_links && typeof shelter.shelter_external_links === "object" && !Array.isArray(shelter.shelter_external_links)
+                  && Object.entries(shelter.shelter_external_links).map(([name, url]: [string, unknown]) => (
+                    <Button
+                      asChild
+                      variant="ghost"
+                      className="w-full justify-start"
+                      key={name}
+                    >
+                      <a href={String(url).startsWith("http") ? String(url) : `https://${url}`} target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        {name}
+                      </a>
+                    </Button>
+                  ))}
+                {/* <Button variant="ghost" className="w-full justify-start">
                   <Users className="w-4 h-4 mr-2" />
                   Ser Voluntario
                 </Button>
@@ -237,7 +256,7 @@ export default async function ShelterDetailPage({ params }: { params: Promise<{ 
                 <Button variant="ghost" className="w-full justify-start">
                   <Package className="w-4 h-4 mr-2" />
                   Lista de Deseos
-                </Button>
+                </Button> */}
               </CardContent>
             </Card>
           </div>
