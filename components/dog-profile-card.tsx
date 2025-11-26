@@ -44,13 +44,15 @@ export function DogProfileCard({
     <Card className="group overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border-2 border-border/50 hover:border-primary/30">
       {/* Image */}
       <div className="relative h-64 overflow-hidden">
-        <Image
-          src={image || "/placeholder.svg"}
-          alt={name}
-          width={400}
-          height={400}
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-        />
+        <Link href={`/dogs/${id}`}>
+          <Image
+            src={image || "/placeholder.svg"}
+            alt={name}
+            width={400}
+            height={400}
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+          />
+        </Link>
         <button className="absolute top-4 right-4 p-2 bg-white/95 rounded-full shadow-lg hover:bg-accent hover:scale-110 transition-all">
           <Heart className="w-5 h-5 text-accent group-hover:fill-white group-hover:text-white" />
         </button>
@@ -66,9 +68,11 @@ export function DogProfileCard({
       <CardHeader className="space-y-3 pb-3">
         {/* Name & Basic Info */}
         <div>
-          <h3 className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
-            {name}
-          </h3>
+          <Link href={`/dogs/${id}`}>
+            <h3 className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
+              {name}
+            </h3>
+          </Link>
           <p className="text-sm text-muted-foreground mt-1">
             {breed} • {age} • {size}
           </p>

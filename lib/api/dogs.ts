@@ -1,7 +1,7 @@
 import { docClient } from "@/lib/dynamodb";
 import { ScanCommand, GetCommand } from "@aws-sdk/lib-dynamodb";
 import { Dog, DogTag, DogHealthInfo, DogShelterInfo } from "@/lib/dogs-data";
-import { getShelterById } from "@/lib/api/shelters";
+import { getShelterById, getShelters } from "@/lib/api/shelters";
 
 const TABLE_NAME = "registro_de_mascotas_ourpawradise";
 
@@ -73,6 +73,44 @@ function mapItemToDog(item: any, shelterInfo: DogShelterInfo): Dog {
         shelter: shelterInfo,
         adoptionFee: item.pet_adoptionFee
     };
+}
+
+export async function getAllDogs(): Promise<Dog[]> {
+    try {
+        // Ideally we should fetch shelters first to have a map, to avoid N+1 fetches or missing info
+        // However, for now, let's fetch all shelters and map them by ID for efficient lookup
+        const shelters = await getShelters();
+        const shelterMap = new Map(shelters.map(s => [s.id, s]));
+
+        const command = new ScanCommand({
+            TableName: TABLE_NAME,
+        });
+
+        const response = await docClient.send(command);
+        const items = response.Items || [];
+
+        return items.map((item: any) => {
+            const shelterId = item.shelter_uuid;
+            const shelter = shelterMap.get(shelterId);
+            const shelterInfo: DogShelterInfo = shelter ? {
+                id: shelter.id,
+                name: shelter.name,
+                location: shelter.location,
+                phone: shelter.phone || "",
+                email: shelter.email
+            } : {
+                id: shelterId || "unknown",
+                name: "Desconocido",
+                location: "Desconocido",
+                phone: ""
+            };
+            return mapItemToDog(item, shelterInfo);
+        });
+
+    } catch (error) {
+        console.error("Error fetching all dogs:", error);
+        return [];
+    }
 }
 
 export async function getDogsByShelterId(shelterId: string): Promise<Dog[]> {

@@ -4,9 +4,13 @@ import { DogProfileCard } from './dog-profile-card'
 import { Button } from '@/components/ui/button'
 import { useState } from 'react'
 import { Badge } from '@/components/ui/badge'
-import { dogs } from '@/lib/dogs-data'
+import { Dog } from '@/lib/dogs-data'
 
-export function AdoptionSection() {
+interface AdoptionSectionProps {
+  dogs: Dog[]
+}
+
+export function AdoptionSection({ dogs }: AdoptionSectionProps) {
   const [showAll, setShowAll] = useState(false)
   const displayedDogs = showAll ? dogs : dogs.slice(0, 6)
 
