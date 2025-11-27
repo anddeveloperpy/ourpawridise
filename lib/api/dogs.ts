@@ -23,7 +23,7 @@ function mapItemToDog(item: any, shelterInfo: DogShelterInfo): Dog {
             if (typeof p === 'string') return p;
             if (p.S) return p.S;
             return "";
-        }).filter((p) => p !== "");
+        }).filter((p: string) => p !== "");
     }
 
     // Handle tags
@@ -196,7 +196,7 @@ export async function getAllDogIds(): Promise<string[]> {
         const response = await docClient.send(command);
         const items = response.Items || [];
 
-        return items.map((item: any) => item.uuid).filter((id) => !!id);
+        return items.map((item: any) => item.uuid).filter((id: string) => !!id);
     } catch (error) {
         console.error("Error fetching all dog IDs:", error);
         return [];
