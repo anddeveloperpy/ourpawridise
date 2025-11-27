@@ -13,7 +13,7 @@ function mapItemToDog(item: any, shelterInfo: DogShelterInfo): Dog {
             if (typeof img === 'string') return img;
             if (img.S) return img.S;
             return "";
-        }).filter((img) => img !== "");
+        }).filter((img: string) => img !== "");
     }
 
     // Handle personality
