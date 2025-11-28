@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Heart, MapPin } from 'lucide-react'
+import { FaMars, FaVenus } from 'react-icons/fa'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -20,6 +21,7 @@ interface DogProfileCardProps {
   color: string
   healthStatus: string
   image: string
+  gender: 'Macho' | 'Hembra'
   shelter: {
     name: string
     id: string
@@ -37,6 +39,7 @@ export function DogProfileCard({
   color,
   healthStatus,
   image,
+  gender,
   shelter,
   tags,
 }: DogProfileCardProps) {
@@ -53,9 +56,13 @@ export function DogProfileCard({
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
           />
         </Link>
-        <button className="absolute top-4 right-4 p-2 bg-white/95 rounded-full shadow-lg hover:bg-accent hover:scale-110 transition-all">
-          <Heart className="w-5 h-5 text-accent group-hover:fill-white group-hover:text-white" />
-        </button>
+        <div className="absolute top-4 right-4 p-2 bg-white/95 rounded-full shadow-lg transition-all">
+          {gender === 'Macho' ? (
+            <FaMars className="w-5 h-5 text-blue-500" />
+          ) : (
+            <FaVenus className="w-5 h-5 text-pink-500" />
+          )}
+        </div>
 
         {/* Health Badge */}
         <div className="absolute bottom-4 left-4">

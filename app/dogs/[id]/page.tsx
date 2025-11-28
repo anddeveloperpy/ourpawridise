@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Heart, Share2, MapPin, Calendar, Ruler, Palette, Thermometer, CheckCircle2 } from 'lucide-react'
+import { FaMars, FaVenus } from 'react-icons/fa'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Footer } from '@/components/footer'
@@ -42,13 +43,12 @@ export default async function DogDetailPage({ params }: { params: Promise<{ id: 
                   height={600}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute top-4 right-4 flex gap-2">
-                  <button className="p-3 bg-white/95 rounded-full shadow-lg hover:bg-accent hover:scale-110 transition-all group">
-                    <Heart className="w-5 h-5 text-accent group-hover:fill-white group-hover:text-white" />
-                  </button>
-                  <button className="p-3 bg-white/95 rounded-full shadow-lg hover:bg-primary hover:scale-110 transition-all group">
-                    <Share2 className="w-5 h-5 text-primary group-hover:text-white" />
-                  </button>
+                <div className="absolute top-4 right-4 p-3 bg-white/95 rounded-full shadow-lg transition-all">
+                  {dog.gender === 'Macho' ? (
+                    <FaMars className="w-6 h-6 text-blue-500" />
+                  ) : (
+                    <FaVenus className="w-6 h-6 text-pink-500" />
+                  )}
                 </div>
               </div>
 
