@@ -125,6 +125,7 @@ export default async function ShelterDetailPage({ params }: { params: Promise<{ 
                 <p className="text-muted-foreground leading-relaxed">
                   {shelter.description}
                 </p>
+                <p className="text-2xl">Nuestra Misión</p>
                 {shelter.mission && (
                   <p className="text-muted-foreground leading-relaxed">
                     {shelter.mission}
