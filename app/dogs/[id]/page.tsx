@@ -142,7 +142,7 @@ export default async function DogDetailPage({ params }: { params: Promise<{ id: 
                       <span className="ml-2 font-medium text-foreground">{dog.age}</span>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center gap-3 text-sm">
                     <Ruler className="w-5 h-5 text-muted-foreground" />
                     <div>
@@ -150,7 +150,7 @@ export default async function DogDetailPage({ params }: { params: Promise<{ id: 
                       <span className="ml-2 font-medium text-foreground">{dog.size}</span>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center gap-3 text-sm">
                     <Palette className="w-5 h-5 text-muted-foreground" />
                     <div>
@@ -158,7 +158,7 @@ export default async function DogDetailPage({ params }: { params: Promise<{ id: 
                       <span className="ml-2 font-medium text-foreground">{dog.color}</span>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center gap-3 text-sm">
                     <Thermometer className="w-5 h-5 text-muted-foreground" />
                     <div>
@@ -183,8 +183,8 @@ export default async function DogDetailPage({ params }: { params: Promise<{ id: 
                         tag.variant === 'accent'
                           ? 'border-accent/40 text-accent bg-accent/5'
                           : tag.variant === 'secondary'
-                          ? 'border-secondary/40 text-secondary bg-secondary/5'
-                          : 'border-primary/40 text-primary bg-primary/5'
+                            ? 'border-secondary/40 text-secondary bg-secondary/5'
+                            : 'border-primary/40 text-primary bg-primary/5'
                       }
                     >
                       {tag.label}
@@ -196,7 +196,7 @@ export default async function DogDetailPage({ params }: { params: Promise<{ id: 
                 <div className="space-y-3 pt-4">
                   <Button className="w-full bg-accent hover:bg-accent/90 text-white rounded-full shadow-lg hover:shadow-xl transition-all text-lg py-6">
                     <Heart className="w-5 h-5 mr-2 fill-white" />
-                    Quiero Adoptar a {dog.name}
+                    Adoptar
                   </Button>
                   <Button variant="outline" className="w-full border-2 border-primary text-primary hover:bg-primary hover:text-white rounded-full">
                     Enviar Mensaje
