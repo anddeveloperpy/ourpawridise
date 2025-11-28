@@ -15,9 +15,32 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'OurPawradise - Dog Rescue, Adoption & Community',
-  description: 'Help rescued dogs find love and a new life in Guatemala. Connect with shelters, adopt a rescued dog, and join a compassionate community.',
+  title: 'OurPawradise - Rescate de Perros, Adopción y Comunidad',
+  description: 'Ayuda a los perros rescatados a encontrar amor y una nueva vida en Guatemala. Conecta con refugios, adopta un perro rescatado y únete a una comunidad compasiva.',
   generator: 'v0.app',
+  metadataBase: new URL('https://ourpawradise.site'),
+  openGraph: {
+    title: 'OurPawradise - Rescate de Perros, Adopción y Comunidad',
+    description: 'Ayuda a los perros rescatados a encontrar amor y una nueva vida en Guatemala. Conecta con refugios, adopta un perro rescatado y únete a una comunidad compasiva.',
+    url: 'https://ourpawradise.site',
+    siteName: 'OurPawradise',
+    images: [
+      {
+        url: '/Logos/LogoOurPawradise.png',
+        width: 800,
+        height: 600,
+        alt: 'Logo de OurPawradise',
+      },
+    ],
+    locale: 'es_GT',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'OurPawradise - Rescate de Perros, Adopción y Comunidad',
+    description: 'Ayuda a los perros rescatados a encontrar amor y una nueva vida en Guatemala.',
+    images: ['/Logos/LogoOurPawradise.png'],
+  },
   icons: {
     icon: '/Logos/LogoOurPawradise.png',
     apple: '/Logos/LogoOurPawradise.png',
