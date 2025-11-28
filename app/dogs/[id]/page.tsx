@@ -2,13 +2,13 @@ import { Navigation } from '@/components/navigation'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { Heart, Share2, MapPin, Calendar, Ruler, Palette, Thermometer, CheckCircle2 } from 'lucide-react'
-import { FaMars, FaVenus } from 'react-icons/fa'
+import { MapPin, Calendar, Ruler, Palette, Thermometer, CheckCircle2, Heart } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Footer } from '@/components/footer'
 import { getDogById } from '@/lib/api/dogs'
 import { notFound } from 'next/navigation'
+import { ImageGallery } from '@/components/image-gallery'
 
 // Force dynamic rendering - no caching
 export const dynamic = 'force-dynamic'
@@ -31,39 +31,7 @@ export default async function DogDetailPage({ params }: { params: Promise<{ id: 
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-8">
             {/* Image Gallery */}
-            <div className="space-y-4">
-              <div className="relative h-96 sm:h-[500px] rounded-3xl overflow-hidden shadow-2xl">
-                <Image
-                  src={dog.images[0] || "/placeholder.svg"}
-                  alt={dog.name}
-                  width={800}
-                  height={600}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute top-4 right-4 p-3 bg-white/95 rounded-full shadow-lg transition-all">
-                  {dog.gender === 'Macho' ? (
-                    <FaMars className="w-6 h-6 text-blue-500" />
-                  ) : (
-                    <FaVenus className="w-6 h-6 text-pink-500" />
-                  )}
-                </div>
-              </div>
-
-              {/* Thumbnail Gallery */}
-              <div className="grid grid-cols-3 gap-4">
-                {dog.images.slice(1).map((img: string, idx: number) => (
-                  <div key={idx} className="relative h-32 rounded-2xl overflow-hidden shadow-lg cursor-pointer hover:scale-105 transition-transform">
-                    <Image
-                      src={img || "/placeholder.svg"}
-                      alt={`${dog.name} ${idx + 2}`}
-                      width={300}
-                      height={200}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
+            <ImageGallery images={dog.images} name={dog.name} gender={dog.gender} />
 
             {/* Story */}
             <Card>
@@ -167,7 +135,11 @@ export default async function DogDetailPage({ params }: { params: Promise<{ id: 
 
                 <div className="border-t border-border pt-4">
                   <div className="text-sm text-muted-foreground mb-1">Cuota de adopción:</div>
-                  <div className="font-semibold text-foreground">{dog.adoptionFee}</div>
+                  <div className="font-semibold text-foreground">
+                    {dog.adoptionFee.toLowerCase().includes('gratis')
+                      ? dog.adoptionFee.charAt(0).toUpperCase() + dog.adoptionFee.slice(1).toLowerCase()
+                      : `Q.${dog.adoptionFee.replace(/\D/g, '')}`}
+                  </div>
                 </div>
 
                 {/* Tags */}
@@ -205,8 +177,14 @@ export default async function DogDetailPage({ params }: { params: Promise<{ id: 
                   <div className="text-sm text-muted-foreground mb-3">Refugio responsable:</div>
                   <Link href={`/shelters/${dog.shelter.id}`} className="group">
                     <div className="flex items-start gap-3 p-3 rounded-lg hover:bg-muted/50 transition-colors">
-                      <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                        <Heart className="w-6 h-6 text-primary" />
+                      <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 border-2 border-primary/20 group-hover:border-primary/40 transition-colors">
+                        <Image
+                          src={dog.shelter.image || '/placeholder.svg'}
+                          alt={dog.shelter.name}
+                          width={48}
+                          height={48}
+                          className="w-full h-full object-cover"
+                        />
                       </div>
                       <div>
                         <div className="font-semibold text-foreground group-hover:text-primary transition-colors">

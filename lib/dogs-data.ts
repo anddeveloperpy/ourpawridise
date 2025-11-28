@@ -14,6 +14,7 @@ export interface DogShelterInfo {
   location: string;
   phone: string;
   email?: string;
+  image?: string;
 }
 
 export interface Dog {

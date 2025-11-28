@@ -118,7 +118,8 @@ export async function getAllDogs(): Promise<Dog[]> {
                 name: shelter.name,
                 location: shelter.location,
                 phone: shelter.phone || "",
-                email: shelter.email
+                email: shelter.email,
+                image: shelter.image
             } : {
                 id: shelterId || "unknown",
                 name: "Desconocido",
@@ -142,7 +143,8 @@ export async function getDogsByShelterId(shelterId: string): Promise<Dog[]> {
             name: shelter.name,
             location: shelter.location,
             phone: shelter.phone || "",
-            email: shelter.email
+            email: shelter.email,
+            image: shelter.image
         } : {
             id: shelterId,
             name: "Desconocido",
@@ -189,7 +191,8 @@ export async function getDogById(id: string): Promise<Dog | null> {
             name: shelter.name,
             location: shelter.location,
             phone: shelter.phone || "",
-            email: shelter.email
+            email: shelter.email,
+            image: shelter.image
         } : {
             id: item.shelter_uuid,
             name: "Desconocido",
