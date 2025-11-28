@@ -7,15 +7,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Footer } from '@/components/footer'
 import { notFound } from 'next/navigation'
-import { getShelters, getShelterById } from '@/lib/api/shelters'
+import { getShelterById } from '@/lib/api/shelters'
 import { getDogsByShelterId } from '@/lib/api/dogs'
 
-export async function generateStaticParams() {
-  const shelters = await getShelters()
-  return shelters.map((shelter) => ({
-    id: shelter.id,
-  }))
-}
+// Force dynamic rendering - no caching
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
 
 export default async function ShelterDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
@@ -24,7 +21,7 @@ export default async function ShelterDetailPage({ params }: { params: Promise<{ 
   if (!shelter) {
     notFound()
   }
-  else{
+  else {
     console.log(shelter.shelter_external_links)
   }
 
@@ -230,7 +227,7 @@ export default async function ShelterDetailPage({ params }: { params: Promise<{ 
                 <CardTitle className="text-xl">Enlaces Rápidos</CardTitle>
               </CardHeader>
               <CardContent className="space-y-2">
-                 {shelter.shelter_external_links && typeof shelter.shelter_external_links === "object" && !Array.isArray(shelter.shelter_external_links)
+                {shelter.shelter_external_links && typeof shelter.shelter_external_links === "object" && !Array.isArray(shelter.shelter_external_links)
                   && Object.entries(shelter.shelter_external_links).map(([name, url]: [string, unknown]) => (
                     <Button
                       asChild

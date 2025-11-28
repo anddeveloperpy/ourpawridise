@@ -7,15 +7,12 @@ import { FaMars, FaVenus } from 'react-icons/fa'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Footer } from '@/components/footer'
-import { getDogById, getAllDogIds } from '@/lib/api/dogs'
+import { getDogById } from '@/lib/api/dogs'
 import { notFound } from 'next/navigation'
 
-export async function generateStaticParams() {
-  const ids = await getAllDogIds()
-  return ids.map((id) => ({
-    id: id,
-  }))
-}
+// Force dynamic rendering - no caching
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
 
 export default async function DogDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params

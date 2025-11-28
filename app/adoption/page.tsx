@@ -10,6 +10,10 @@ export const metadata = {
   description: 'Conoce a los perros rescatados disponibles para adopción en Guatemala.',
 }
 
+// Force dynamic rendering - no caching
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 export default async function AdoptionPage() {
   const dogs = await getAllDogs()
 

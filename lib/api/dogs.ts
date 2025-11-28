@@ -32,7 +32,7 @@ function mapItemToDog(item: any, shelterInfo: DogShelterInfo): Dog {
         Object.entries(item.pet_tags).forEach(([key, value]: [string, any]) => {
             let variant: 'default' | 'secondary' | 'accent' = 'default';
             const valStr = typeof value === 'object' && value.S ? value.S : String(value);
-            
+
             if (['default', 'secondary', 'accent'].includes(valStr)) {
                 variant = valStr as 'default' | 'secondary' | 'accent';
             }
@@ -47,12 +47,31 @@ function mapItemToDog(item: any, shelterInfo: DogShelterInfo): Dog {
     const healthInfo: DogHealthInfo[] = [];
     if (item.pet_healthInfo && typeof item.pet_healthInfo === 'object') {
         Object.entries(item.pet_healthInfo).forEach(([key, value]: [string, any]) => {
-                const status = typeof value === 'object' && value.S ? value.S : String(value);
-                healthInfo.push({
+            const status = typeof value === 'object' && value.S ? value.S : String(value);
+            healthInfo.push({
                 label: key,
                 status: status
-                });
+            });
         });
+    }
+
+    // Map pet_size to sizeCategory
+    let sizeCategory: 'Grande' | 'Mediano' | 'Pequeño' | 'Mini' = 'Mediano';
+    if (item.pet_size) {
+        const sizeStr = String(item.pet_size).toLowerCase();
+        if (sizeStr.includes('grande')) sizeCategory = 'Grande';
+        else if (sizeStr.includes('mediano')) sizeCategory = 'Mediano';
+        else if (sizeStr.includes('pequeño') || sizeStr.includes('pequeno')) sizeCategory = 'Pequeño';
+        else if (sizeStr.includes('mini')) sizeCategory = 'Mini';
+    }
+
+    // Map pet_type to type
+    let type: 'Perro' | 'Gato' | 'Otro' = 'Perro';
+    if (item.pet_type) {
+        const typeStr = String(item.pet_type);
+        if (typeStr === 'Perro' || typeStr === 'Gato' || typeStr === 'Otro') {
+            type = typeStr as 'Perro' | 'Gato' | 'Otro';
+        }
     }
 
     return {
@@ -61,6 +80,8 @@ function mapItemToDog(item: any, shelterInfo: DogShelterInfo): Dog {
         breed: item.pet_breed,
         age: item.pet_age,
         size: item.pet_size,
+        sizeCategory: sizeCategory,
+        type: type,
         temperament: item.pet_temperament,
         color: item.pet_color,
         healthStatus: item.pet_healthStatus,

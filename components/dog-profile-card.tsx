@@ -130,7 +130,7 @@ export function DogProfileCard({
         {/* CTA Button */}
         <Link href={`/dogs/${id}`}>
           <Button className="w-full bg-primary hover:bg-primary/90 text-white rounded-full shadow-md hover:shadow-lg transition-all">
-            Contactar para Adoptar
+            Información de la mascota
           </Button>
         </Link>
       </CardContent>

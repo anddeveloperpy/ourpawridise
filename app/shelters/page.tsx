@@ -10,6 +10,10 @@ export const metadata = {
   description: 'Encuentra refugios de perros en Guatemala y ayuda a salvar vidas.',
 }
 
+// Force dynamic rendering - no caching
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 export default async function SheltersPage() {
   const shelters = await getShelters()
 
