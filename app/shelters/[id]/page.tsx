@@ -158,8 +158,10 @@ export default async function ShelterDetailPage({ params }: { params: Promise<{ 
                             height={300}
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                          <div className="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-full group-hover:translate-y-0 transition-transform">
+                          {/* Gradient overlay - visible en móvil, solo en hover en desktop */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent md:opacity-0 md:group-hover:opacity-100 transition-opacity" />
+                          {/* Info overlay - siempre visible en móvil, solo en hover en desktop */}
+                          <div className="absolute bottom-0 left-0 right-0 p-4 text-white md:transform md:translate-y-full md:group-hover:translate-y-0 transition-transform">
                             <div className="font-bold text-lg">{dog.name}</div>
                             <div className="text-sm opacity-90">{dog.breed}</div>
                             <div className="font-semibold mt-1">Ver Perfil</div>
@@ -173,7 +175,7 @@ export default async function ShelterDetailPage({ params }: { params: Promise<{ 
                     <p>No hay perros disponibles para adopción en este momento.</p>
                   </div>
                 )}
-                <Link href="/#adopt">
+                <Link href="/adoption">
                   <Button variant="outline" className="w-full mt-6 rounded-full">
                     Ver Todos los Perros
                     <ExternalLink className="w-4 h-4 ml-2" />
