@@ -42,17 +42,17 @@ export function Footer() {
             <h3 className="font-bold text-foreground mb-4">Enlaces Rápidos</h3>
             <ul className="space-y-3">
               <li>
-                <Link href="/#shelters" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                <Link href="/shelters" className="text-muted-foreground hover:text-primary transition-colors text-sm">
                   Refugios
                 </Link>
               </li>
               <li>
-                <Link href="/#adopt" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                <Link href="/adoption" className="text-muted-foreground hover:text-primary transition-colors text-sm">
                   Adoptar un Perro
                 </Link>
               </li>
               <li>
-                <Link href="/#community" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                <Link href="/community" className="text-muted-foreground hover:text-primary transition-colors text-sm">
                   Comunidad
                 </Link>
               </li>
@@ -112,7 +112,7 @@ export function Footer() {
               </div>
               <div className="flex items-start gap-2 text-muted-foreground">
                 <Phone className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span>+502 1234-5678</span>
+                <span>+502 5714-5425</span>
               </div>
               <div className="flex items-start gap-2 text-muted-foreground">
                 <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
