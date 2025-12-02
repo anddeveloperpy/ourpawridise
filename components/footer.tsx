@@ -108,7 +108,7 @@ export function Footer() {
             <div className="space-y-3 text-sm">
               <div className="flex items-start gap-2 text-muted-foreground">
                 <Mail className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span>info@ourpawradise.org</span>
+                <span>andres@ourpawradise.org</span>
               </div>
               <div className="flex items-start gap-2 text-muted-foreground">
                 <Phone className="w-4 h-4 mt-0.5 flex-shrink-0" />
